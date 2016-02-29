@@ -30,7 +30,7 @@
     "lint"
   ],
   "dependencies": {
-    "babel-core": "6.4.5",
+    "babel-core": "6.6.0",
     "babel-preset-es2015": "6.3.13",
     "babel-register": "6.4.3",
     "color": "0.11.1",
