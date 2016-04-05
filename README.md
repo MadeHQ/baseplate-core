@@ -2,7 +2,11 @@
 
 [![Circle CI](https://circleci.com/gh/MadeHQ/baseplate-core/tree/master.svg?style=svg)](https://circleci.com/gh/MadeHQ/baseplate-core/tree/master)
 
-A tool for helping build prototypes and pattern libraries.
+[![Dependencies](https://david-dm.org/madehq/baseplate-core.svg)](https://david-dm.org/madehq/baseplate-core)
+
+[![Dev Dependencies](https://david-dm.org/madehq/baseplate-core/dev-status.svg)](https://david-dm.org/madehq/baseplate-core#info=devDependencies&view=table)
+
+A tool for building prototypes and pattern libraries.
 
 Inspired heavily by [component-styleguide](https://github.com/webpro/component-styleguide). This is still very specific to our use-case so you probably want to look at component-styleguide first.
 
@@ -189,7 +193,7 @@ baseplate(styleguide, config).then(function (server) {
 });
 ```
 
-And run it with: `npm start`. The example app uses `nodemon` instead so you may want to use that as well: `nodemon -e js,html -- server.js`
+Run it with `node server.js`
 
 ## API
 
