@@ -47,7 +47,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "ava": "0.13.0",
+    "ava": "0.14.0",
     "clean-css": "3.4.11",
     "nsp": "2.3.0",
     "pre-commit": "1.1.2",
