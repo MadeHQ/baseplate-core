@@ -24,7 +24,7 @@
     "build": "npm run clientJs && npm run clientCss",
     "lint": "xo --space 4 -- server/{*,**/*}.js client/*.js",
     "requiresafe": "nsp check",
-    "test": "npm run lint && ava server/tests/*.js",
+    "test": "npm run lint && ava",
     "posttest": "npm run requiresafe"
   },
   "pre-commit": [

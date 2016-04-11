@@ -1,7 +1,7 @@
 'use strict';
 
 var test = require('ava');
-var collections = require('../lib/collections.js');
+var collections = require('../server/lib/collections.js');
 
 test('collections#pages', t => {
     let noop = () => {};
@@ -11,7 +11,7 @@ test('collections#pages', t => {
         'template-2.html': noop
     };
 
-    t.same(collections.pages(templates), [
+    t.deepEqual(collections.pages(templates), [
         {
             id: 'template-1',
             label: 'Template 1',
@@ -33,7 +33,7 @@ test('collections#patterns', t => {
         'modules/pattern-2.html': noop
     };
 
-    t.same(collections.patterns(templates), {
+    t.deepEqual(collections.patterns(templates), {
         base: [{
             id: 'pattern-1',
             label: 'Pattern 1',

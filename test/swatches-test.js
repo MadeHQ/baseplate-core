@@ -1,7 +1,7 @@
 'use strict';
 
 var test = require('ava');
-var swatches = require('../lib/swatches.js');
+var swatches = require('../server/lib/swatches.js');
 
 test('swatches', function (t) {
     var data = swatches([

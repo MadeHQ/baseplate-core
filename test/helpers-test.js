@@ -1,7 +1,7 @@
 'use strict';
 
 var test = require('ava');
-var hbsHelpers = require('../helpers');
+var hbsHelpers = require('../server/helpers');
 
 test('hbsHelpers#getOrElse', function (t) {
     t.plan(4);
