@@ -1,7 +1,7 @@
 {
   "name": "baseplate-core",
   "main": "server/index.js",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "license": "MIT",
   "description": "Baseplate core. A tool for helping build prototypes and pattern libraries.",
   "author": "Made Media Ltd. <developers@mademedia.co.uk> (made.media)",
