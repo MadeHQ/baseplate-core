@@ -1,18 +1,18 @@
 'use strict';
 
+var path = require('path');
 var express = require('express');
 var expressHbs = require('express-handlebars');
 var auth = require('http-auth');
-var path = require('path');
 var glob = require('glob');
-var routes = require('./routes');
-var helpers = require('./helpers');
-var templateData = require('./lib/templateData');
 var includes = require('lodash/includes');
 var assign = require('lodash/assign');
 var dropRight = require('lodash/dropRight');
 var last = require('lodash/last');
 var flatten = require('lodash/flatten');
+var routes = require('./routes');
+var helpers = require('./helpers');
+var templateData = require('./lib/templateData');
 
 var AUTH_USER = process.env.AUTH_USER;
 var AUTH_PASSWORD = process.env.AUTH_PASSWORD;

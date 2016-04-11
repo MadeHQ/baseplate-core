@@ -1,7 +1,7 @@
 'use strict';
 
-var express = require('express');
 var path = require('path');
+var express = require('express');
 var find = require('lodash/find');
 
 var collections = require('../lib/collections');

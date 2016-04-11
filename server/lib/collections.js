@@ -1,7 +1,7 @@
 'use strict';
 
-var _ = require('lodash');
 var path = require('path');
+var _ = require('lodash');
 var usageNotes = require('./usageNotes');
 
 const labelFromSlug = slug => _.capitalize(slug.replace(/-/g, ' '));
