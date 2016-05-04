@@ -49,7 +49,7 @@
   "devDependencies": {
     "ava": "0.14.0",
     "clean-css": "3.4.12",
-    "nsp": "2.3.2",
+    "nsp": "2.4.0",
     "pre-commit": "1.1.2",
     "temp-write": "2.1.0",
     "uglifyjs": "2.4.10",
