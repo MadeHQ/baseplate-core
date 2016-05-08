@@ -33,7 +33,10 @@
   "xo": {
     "space": 4,
     "rules": {
-      "xo/filename-case": ["error", "kebabCase"]
+      "xo/filename-case": [
+        "error",
+        "kebabCase"
+      ]
     }
   },
   "dependencies": {
@@ -45,7 +48,7 @@
     "glob": "7.0.3",
     "handlebars": "4.0.5",
     "http-auth": "2.3.3",
-    "lodash": "4.11.2",
+    "lodash": "4.12.0",
     "lorem-ipsum": "1.0.3",
     "minimist": "1.2.0",
     "morgan": "1.7.0",
