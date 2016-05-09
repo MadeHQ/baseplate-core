@@ -1,9 +1,5 @@
 var url = require('url');
 
-/**
- * Common variables
- * Handy for mimicking SilverStripe templates
- */
 module.exports = {
     absoluteLink: function (req) {
         return url.format({
@@ -14,5 +10,8 @@ module.exports = {
     },
     link: function (req) {
         return req.originalUrl;
+    },
+    queryString: function (req) {
+        return req.query;
     }
 };

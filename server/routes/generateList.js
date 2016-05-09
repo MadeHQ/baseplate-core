@@ -20,7 +20,8 @@ module.exports = function (sectionConfig, items, partials, data, clientDir) {
             helpers: helpers,
             data: assign(data, {
                 link: commonVariables.link(req),
-                absoluteLink: commonVariables.absoluteLink(req)
+                absoluteLink: commonVariables.absoluteLink(req),
+                queryString: commonVariables.queryString(req)
             })
         });
     }

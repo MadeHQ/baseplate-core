@@ -6,7 +6,7 @@ var expressHbs = require('express-handlebars');
 var auth = require('http-auth');
 var glob = require('glob');
 var includes = require('lodash/includes');
-var assign = require('lodash/assign');
+var defaults = require('lodash/defaults');
 var dropRight = require('lodash/dropRight');
 var last = require('lodash/last');
 var flatten = require('lodash/flatten');
@@ -38,7 +38,7 @@ app.use(require('compression')());
 app.use(require('errorhandler')());
 
 module.exports = function (styleguideOptions, options) {
-    const config = assign({
+    const config = defaults(options, {
         ext: 'html',
         port: process.env.PORT || 4444,
         staticPaths: ['static', 'examples'],
@@ -61,7 +61,7 @@ module.exports = function (styleguideOptions, options) {
             showUsage: true,
             ordering: null
         }]
-    }, options);
+    });
 
     const viewsDir = path.resolve(process.cwd(), config.viewsDir);
     const clientDir = path.resolve(path.resolve(__dirname, '..'), 'client');

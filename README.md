@@ -28,6 +28,7 @@ Handlebars is a logicless templating engine so you need helpers to do anything i
 |`{{lorem count}}`| Lorem ipsum generator. Returns `count` sentences |
 |`{{loremWords min max}}`| Lorem ipsum generator. Returns random words between `min` and `max` |
 |`{{inlineFile 'path/to/file.ext'}}`| Returns the contents of a file |
+|`{{#queryString 'param' matches='value' }}` | Block helper to check if a query string parameter matches a certain value |
 
 ### Common Variables
 
@@ -35,8 +36,9 @@ A handful of root level common variables are exposed for use in templates. They 
 
 | Variable | Description
 |---|---|---|
-| `{{@root.link}}` | Relative link to the current page
-| `{{@root.absoluteLink}}` | Absolute link to the current page
+| `{{@root.link}}` | Relative link to the current page |
+| `{{@root.absoluteLink}}` | Absolute link to the current page |
+| `{{@root.queryString}}` | Raw query string object |
 
 ### Partials
 
