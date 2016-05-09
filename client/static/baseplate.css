@@ -111,6 +111,16 @@ body {
 }
 
 /* ==========================================================================
+   Listings
+   ========================================================================== */
+
+.sg-list {
+    list-style: none;
+    padding-left: 0;
+    font-family: sans-serif !important;
+}
+
+/* ==========================================================================
    Patterns
    ========================================================================== */
 
@@ -144,8 +154,25 @@ body {
 
 .sg-usage {
     margin-bottom: 10px;
-    font-style: italic;
+    font-family: sans-serif;
+    font-style: normal;
+    border: 1px solid #ddd;
 }
+.sg-usage__title,
+.sg-usage__content {
+    padding: 10px;
+}
+.sg-usage__title {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    background-color: #eee;
+}
+.sg-usage__content {
+    font-size: 14px;
+}
+
 
 /* ==========================================================================
    Swatches
