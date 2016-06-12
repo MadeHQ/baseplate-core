@@ -172,7 +172,13 @@ body {
 .sg-usage__content {
     font-size: 14px;
 }
-
+.sg-usage__content a {
+    text-decoration: underline;
+}
+.sg-usage__content code {
+    background-color: #eee;
+    padding: 4px;
+}
 
 /* ==========================================================================
    Swatches
