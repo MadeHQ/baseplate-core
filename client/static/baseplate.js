@@ -33,6 +33,28 @@
         }
     }
 
+    function iconGrid() {
+        var iconGrids = document.querySelectorAll('.js-baseplate-icon-grid');
+        if (iconGrids.length) {
+            [].forEach.call(iconGrids, function (grid) {
+                var iconSpriteId = grid.getAttribute('data-icon-sprite');
+                var iconSprite = document.getElementById(iconSpriteId);
+
+                if (iconSprite) {
+                    var iconList = [].map.call(iconSprite.querySelectorAll('symbol'), function (symbol) {
+                        return symbol.id;
+                    });
+
+                    var html = iconList.map(function (id) {
+                        return '<svg class="o-icon o-icon--offset"><use xlink:href="#' + id + '"/></use></svg>';
+                    }).join('');
+
+                    grid.innerHTML = html;
+                }
+            });
+        }
+    }
+
     function sectionNavigtion() {
         var select = document.getElementById('sg-section-switcher');
         if (select) {
@@ -45,5 +67,6 @@
         }
     }
 
+    iconGrid();
     sectionNavigtion();
 })(document);
