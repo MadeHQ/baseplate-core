@@ -67,10 +67,13 @@ module.exports = function (styleguideOptions, options) {
     const clientDir = path.resolve(path.resolve(__dirname, '..'), 'client');
     const componentsDir = path.resolve(process.cwd(), config.componentsDir);
 
-    const defaultPartialsDirs = [
-        {namespace: 'baseplate', dir: path.resolve(clientDir, 'partials')},
-        {namespace: 'partials', dir: path.resolve(viewsDir, 'partials')}
-    ];
+    const defaultPartialsDirs = [{
+        namespace: 'baseplate',
+        dir: path.resolve(clientDir, 'partials')
+    }, {
+        namespace: 'partials',
+        dir: path.resolve(viewsDir, 'partials')
+    }];
 
     const partialsDirs = config.sections
         .filter(item => item.partials === true)

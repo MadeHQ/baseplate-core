@@ -1,19 +1,15 @@
 {
-    "colors": [
-        {
-            "label": "Primary",
-            "color": "#16c98d"
-        }
-    ],
-    "fontStacks": [
-        {
-            "label": "Display",
-            "family": "Open Sans",
-            "source": {
-                "label": "Google Fonts",
-                "url": "http://www.google.com/fonts/specimen/Open+Sans"
-            },
-            "className": "ff-display"
-        }
-    ]
+    "colors": [{
+        "label": "Primary",
+        "color": "#16c98d"
+    }],
+    "fontStacks": [{
+        "label": "Display",
+        "family": "Open Sans",
+        "source": {
+            "label": "Google Fonts",
+            "url": "http://www.google.com/fonts/specimen/Open+Sans"
+        },
+        "className": "ff-display"
+    }]
 }

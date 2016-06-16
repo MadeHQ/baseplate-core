@@ -7,6 +7,7 @@ var find = require('lodash/find');
 var collections = require('../lib/collections');
 var helpers = require('../helpers');
 
+/* eslint-disable max-params */
 module.exports = function (sectionConfig, directory, items, partials, data, clientDir) {
     var router = new express.Router({
         mergeParams: true

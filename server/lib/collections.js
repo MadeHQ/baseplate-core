@@ -56,4 +56,10 @@ const patterns = (templates, options) => {
     return (options.ordering) ? customOrdering(options.ordering, items) : items;
 };
 
-module.exports = {pages, patterns, _: {labelFromSlug}};
+module.exports = {
+    pages: pages,
+    patterns: patterns,
+    _: {
+        labelFromSlug: labelFromSlug
+    }
+};

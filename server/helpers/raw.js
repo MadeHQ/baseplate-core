@@ -1,1 +1,1 @@
-module.exports = (options) => options.fn();
+module.exports = options => options.fn();
