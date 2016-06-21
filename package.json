@@ -45,7 +45,7 @@
     "errorhandler": "1.4.3",
     "express": "4.14.0",
     "express-handlebars": "3.0.0",
-    "glob": "7.0.4",
+    "glob": "7.0.5",
     "handlebars": "4.0.5",
     "http-auth": "2.4.4",
     "lodash": "4.13.1",
