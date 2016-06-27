@@ -4,10 +4,9 @@ var path = require('path');
 var express = require('express');
 var find = require('lodash/find');
 var assign = require('lodash/assign');
-
 var commonVariables = require('../lib/commonVariables');
 var collections = require('../lib/collections');
-var helpers = require('../helpers');
+var plugins = require('../lib/plugins');
 
 /* eslint-disable max-params */
 module.exports = function (sectionConfig, items, partials, data, clientDir) {
@@ -18,7 +17,7 @@ module.exports = function (sectionConfig, items, partials, data, clientDir) {
     function getItems(req) {
         return collections.pages(items, {
             partials: partials,
-            helpers: helpers,
+            helpers: plugins.getHelpers(),
             data: assign(data, {
                 link: commonVariables.link(req),
                 absoluteLink: commonVariables.absoluteLink(req),

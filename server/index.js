@@ -12,6 +12,7 @@ var last = require('lodash/last');
 var flatten = require('lodash/flatten');
 var routes = require('./routes');
 var helpers = require('./helpers');
+var plugins = require('./lib/plugins');
 var templateData = require('./lib/templateData');
 
 var AUTH_USER = process.env.AUTH_USER;
@@ -37,7 +38,7 @@ app.use(require('morgan')('dev'));
 app.use(require('compression')());
 app.use(require('errorhandler')());
 
-module.exports = function (styleguideOptions, options) {
+module.exports = function (styleguideOptions, options, helperPlugins) {
     const config = defaults(options, {
         ext: 'html',
         port: process.env.PORT || 4444,
@@ -84,12 +85,17 @@ module.exports = function (styleguideOptions, options) {
             };
         });
 
+    plugins.register(
+        helpers,
+        helperPlugins
+    );
+
     const hbs = expressHbs.create({
         defaultLayout: config.layoutTmpl,
         layoutsDir: viewsDir,
         extname: `.${config.ext}`,
         partialsDir: defaultPartialsDirs.concat(partialsDirs),
-        helpers: helpers
+        helpers: plugins.getHelpers()
     });
 
     app.locals.config = config;

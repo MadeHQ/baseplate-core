@@ -3,9 +3,8 @@
 var path = require('path');
 var express = require('express');
 var find = require('lodash/find');
-
 var collections = require('../lib/collections');
-var helpers = require('../helpers');
+var plugins = require('../lib/plugins');
 
 /* eslint-disable max-params */
 module.exports = function (sectionConfig, directory, items, partials, data, clientDir) {
@@ -19,7 +18,7 @@ module.exports = function (sectionConfig, directory, items, partials, data, clie
             partials: partials,
             ordering: sectionConfig.ordering,
             usage: sectionConfig.showUsage,
-            helpers: helpers,
+            helpers: plugins.getHelpers(),
             data: data
         });
     }
