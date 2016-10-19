@@ -17,6 +17,7 @@ var templateData = require('./lib/templateData');
 
 var AUTH_USER = process.env.AUTH_USER;
 var AUTH_PASSWORD = process.env.AUTH_PASSWORD;
+var APP_DIR = path.dirname(require.main.filename);
 
 var app = express();
 
@@ -64,9 +65,9 @@ module.exports = function (styleguideOptions, options, helperPlugins) {
         }]
     });
 
-    const viewsDir = path.resolve(process.cwd(), config.viewsDir);
+    const viewsDir = path.resolve(APP_DIR, config.viewsDir);
     const clientDir = path.resolve(path.resolve(__dirname, '..'), 'client');
-    const componentsDir = path.resolve(process.cwd(), config.componentsDir);
+    const componentsDir = path.resolve(APP_DIR, config.componentsDir);
 
     const defaultPartialsDirs = [{
         namespace: 'baseplate',
@@ -103,7 +104,7 @@ module.exports = function (styleguideOptions, options, helperPlugins) {
     app.locals.styleguideOptions = styleguideOptions;
 
     app.locals.tmplData = (function () {
-        let dataDir = path.resolve(process.cwd(), config.dataDir);
+        let dataDir = path.resolve(APP_DIR, config.dataDir);
         let dataFiles = glob.sync(`${dataDir}/*.json`);
         return templateData(dataFiles);
     })();
@@ -115,8 +116,8 @@ module.exports = function (styleguideOptions, options, helperPlugins) {
 
     app.use('/baseplate', express.static(path.resolve(clientDir, 'static')));
 
-    config.staticPaths.forEach(function (path) {
-        app.use('/' + path, express.static(path));
+    config.staticPaths.forEach(function (staticPath) {
+        app.use('/' + staticPath, express.static(path.resolve(APP_DIR, staticPath)));
     });
 
     return new Promise(function (resolve) {
