@@ -33,7 +33,7 @@
   "xo": {
     "space": 4,
     "rules": {
-      "xo/filename-case": [
+      "unicorn/filename-case": [
         "error",
         "kebabCase"
       ]
