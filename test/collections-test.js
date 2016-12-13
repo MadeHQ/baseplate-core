@@ -39,6 +39,7 @@ test('collections#patterns', t => {
             label: 'Pattern 1',
             group: 'base',
             usage: false,
+            rawTemplate: false,
             content: undefined
         }],
         modules: [{
@@ -46,6 +47,7 @@ test('collections#patterns', t => {
             label: 'Pattern 2',
             group: 'modules',
             usage: false,
+            rawTemplate: false,
             content: undefined
         }]
     });
