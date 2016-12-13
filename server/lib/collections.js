@@ -40,7 +40,6 @@ const getRawTemplate = (dir, filename) => {
     try {
         rawTemplate = fs.readFileSync(path.resolve(dir, filename), 'utf-8');
     } catch (err) { }
-    console.log(rawTemplate);
     return rawTemplate;
 };
 
