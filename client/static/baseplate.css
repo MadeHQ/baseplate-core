@@ -181,6 +181,53 @@ body {
 }
 
 /* ==========================================================================
+   Code
+   ========================================================================== */
+
+.sg-code {
+    margin-bottom: 10px;
+}
+.sg-code__toggle {
+    background: none;
+    border: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: initial;
+    line-height: normal;
+    overflow: hidden;
+    padding: 0;
+    user-select: none;
+    -webkit-appearance: none;
+
+    display: inline-block;
+    color: #333;
+    background-color: #eee;
+    padding: 7px 10px 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 11px;
+    font-family: monospace;
+}
+.sg-code__pre {
+    font-size: 12px;
+    color: #eee;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 2px;
+    max-height: 20em;
+    overflow-y: scroll;
+
+    display: none;
+}
+.sg-code.sg-is-toggled .sg-code__toggle {
+    color: #eee;
+    background-color: #333;
+}
+.sg-code.sg-is-toggled .sg-code__pre {
+    display: block;
+}
+
+/* ==========================================================================
    Swatches
    ========================================================================== */
 

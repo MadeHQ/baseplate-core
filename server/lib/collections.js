@@ -1,5 +1,6 @@
 'use strict';
 
+var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
 var usageNotes = require('./usageNotes');
@@ -34,6 +35,15 @@ const getUsage = (dir, filename) => {
     return usageNotes(filepath, true);
 };
 
+const getRawTemplate = (dir, filename) => {
+    var rawTemplate;
+    try {
+        rawTemplate = fs.readFileSync(path.resolve(dir, filename), 'utf-8');
+    } catch (err) { }
+    console.log(rawTemplate);
+    return rawTemplate;
+};
+
 const getPatterns = (templates, options) => {
     return _.chain(templates).map((value, key) => {
         let id = path.basename(key, path.extname(key));
@@ -42,6 +52,7 @@ const getPatterns = (templates, options) => {
             label: labelFromSlug(id),
             group: key.split(path.sep)[0],
             usage: (options.usage) ? getUsage(options.directory, key) : false,
+            rawTemplate: (options.showSource) ? getRawTemplate(options.directory, key) : false,
             content: value(options.data || {}, {
                 partials: options.partials || {},
                 helpers: options.helpers || {}

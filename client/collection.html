@@ -11,9 +11,9 @@
                         {{capitalize @key}}
                     </a>
                 </h2>
-                {{#each group}}
-                    {{> baseplate/pattern pattern=this basePath=../../basePath}}
-                {{/each}}
+{{#each group}}
+{{> baseplate/pattern pattern=this basePath=../../basePath}}
+{{/each}}
             </section>
         {{/each}}
     </div>

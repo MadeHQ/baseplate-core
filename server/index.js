@@ -61,6 +61,7 @@ module.exports = function (styleguideOptions, options, helperPlugins) {
             directory: 'patterns',
             partials: true,
             showUsage: true,
+            showSource: false,
             ordering: null
         }]
     });

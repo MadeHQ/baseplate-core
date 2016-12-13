@@ -18,6 +18,7 @@ module.exports = function (sectionConfig, directory, items, partials, data, clie
             partials: partials,
             ordering: sectionConfig.ordering,
             usage: sectionConfig.showUsage,
+            showSource: sectionConfig.showSource,
             helpers: plugins.getHelpers(),
             data: data
         });

@@ -55,6 +55,18 @@
         }
     }
 
+    function toggleSource() {
+        var buttons = document.querySelectorAll('.js-baseplate-toggle-source');
+        if (buttons.length) {
+            [].forEach.call(buttons, function(button) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    toggleClass(button.parentNode, 'sg-is-toggled');
+                });
+            });
+        }
+    }
+
     function sectionNavigtion() {
         var select = document.getElementById('sg-section-switcher');
         if (select) {
@@ -68,5 +80,6 @@
     }
 
     iconGrid();
+    toggleSource();
     sectionNavigtion();
 })(document);

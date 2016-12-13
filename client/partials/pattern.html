@@ -20,5 +20,11 @@
                 </div>
             </div>
         {{/if}}
+{{#if rawTemplate}}
+<div class="sg-code" ng-non-bindable>
+<button class="sg-code__toggle js-baseplate-toggle-source">Toggle source</button>
+<pre class="sg-code__pre"><code>{{rawTemplate}}</code></pre>
+</div>
+{{/if}}
     </div>
 {{/with}}
