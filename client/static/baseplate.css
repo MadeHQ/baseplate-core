@@ -60,7 +60,7 @@ body {
 .sg-header {
     overflow: auto;
     color: white;
-    background-color: #336;
+    background-color: #224;
     border-bottom: 1px solid black;
     padding: 0;
 }
@@ -105,10 +105,9 @@ body {
     padding: 10px;
 
     position: fixed;
-    bottom: 0;
-    width: 100%;
     z-index: 999;
-    left: 0;
+    bottom: 0;
+    right: 0;
     text-align: right;
 }
 
@@ -195,6 +194,13 @@ body {
 .sg-usage__content code {
     background-color: #eee;
     padding: 4px;
+}
+.sg-usage__content blockquote {
+    font-style: italic;
+    margin: 0 0 1em 0;
+    padding: 1em 0 .5em;
+    border: 1px dotted rgba(0,0,0,0.2);
+    border-width: 1px 0;
 }
 
 /* ==========================================================================
