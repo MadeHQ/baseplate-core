@@ -1,7 +1,12 @@
 {
+    "title": "Pattern Library",
     "colors": [{
         "label": "Primary",
-        "color": "#16c98d"
+        "color": "#16c98d",
+        "tints": [{
+            "label": "Primary Tint",
+            "color": "#05b87c"
+        }]
     }],
     "fontStacks": [{
         "label": "Display",

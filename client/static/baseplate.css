@@ -236,10 +236,17 @@ body {
     position: relative;
     color: #444;
     background: #eee;
+    display: flex;
+    flex-direction: column;
 }
 .sg-swatch__color {
     display: block;
-    height: 100px;
+    min-height: 100px;
+    flex: 1;
+}
+.sg-swatch__tint {
+    display: block;
+    height: 20px;
 }
 .sg-swatch__details {
     list-style: none;
@@ -270,19 +277,20 @@ body {
 }
 @media only screen and ( min-width: 45em ) {
     .sg-swatches {
-        overflow: auto;
         list-style: none;
         margin: 0;
         width: 101%;
         margin-left: -1%;
+        display: flex;
+        flex-wrap: wrap;
     }
     .sg-swatches__item {
-        float: left;
-        margin-left: 0.5%;
-        padding-left: 0.5%;
-        width: 32.3333%;
+        flex: 0 0 25%;
+        padding: 0 0 0 1%;
     }
-    .sg-swatches__item:nth-of-type(3n+1) { clear: left; }
+    .sg-swatches__item .sg-swatch {
+        height: 100%;
+    }
 }
 
 /* ==========================================================================

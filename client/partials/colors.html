@@ -1,11 +1,20 @@
 {{#if colors}}
     <section class="sg-section">
-        <h2 class="sg-section__title sg-heading">Color</h2>
+        <h2 class="sg-section__title sg-heading">Color Palette</h2>
         <ul class="sg-swatches">
             {{#each colors}}
                 <li class="sg-swatches__item">
                     <div class="sg-swatch">
-                        <span class="sg-swatch__color" style="background-color: {{hex}};"></span>
+                        <span class="sg-swatch__color"
+                            style="background-color: {{hex}};"
+                            title="{{label}} ({{hex}})"></span>
+
+                        {{#each tints}}
+                            <span class="sg-swatch__tint"
+                                style="background-color: {{hex}};"
+                                title="{{label}} ({{hex}})"></span>
+                        {{/each}}
+
                         <ul class="sg-swatch__details">
                             <li class="sg-swatch__title"><strong>{{label}}</strong></li>
                             <li class="sg-swatch__prop">{{hex}}</li>
