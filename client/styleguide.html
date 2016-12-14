@@ -1,6 +1,17 @@
 {{> baseplate/header}}
 
 <div class="sg-container">
+    {{#if title}}
+        <section class="sg-section">
+            <h1 class="sg-section__title sg-heading">{{title}}</h1>
+            {{#if introduction}}
+                <div class="sg-section__content sg-introduction">
+                    {{{introduction}}}
+                </div>
+            {{/if}}
+        </section>
+    {{/if}}
+
     {{> baseplate/colors colors=colors}}
     {{> baseplate/fontStacks fontStacks=fontStacks}}
 </div>

@@ -36,6 +36,23 @@ body {
     text-decoration: none;
 }
 
+.sg-introduction h2 a:link,
+.sg-introduction h3 a:link,
+.sg-introduction h4 a:link {
+    font-weight: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted currentColor;
+}
+
+.sg-introduction h2 {
+    font-size: 18px;
+}
+.sg-introduction h3,
+.sg-introduction h4 {
+    font-size: 14px;
+}
+
+
 /* ==========================================================================
    Header
    ========================================================================== */
