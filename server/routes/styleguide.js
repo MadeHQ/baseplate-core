@@ -18,7 +18,8 @@ module.exports = function (styleguide) {
             title: styleguide.title,
             introduction: styleguide.introduction && converter.makeHtml(styleguide.introduction),
             colors: swatches(styleguide.colors),
-            fontStacks: styleguide.fontStacks
+            fontStacks: styleguide.fontStacks,
+            pageSlug: 'styleguide'
         });
     });
 
