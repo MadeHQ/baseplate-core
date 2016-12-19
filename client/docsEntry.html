@@ -1,0 +1,30 @@
+{{> baseplate/header}}
+
+<div class="sg-container">
+    <section class="sg-docs">
+        <aside class="sg-docs__toc">
+            <div class="sg-toc">
+                <h3 class="sg-toc__title">Table of contents</h3>
+                <ul class="sg-toc__list sg-list">
+                    {{#if isIndex}}
+                        <li class="sg-list__item sg-list__item--active">
+                            Index
+                        </li>
+                    {{else}}
+                        <li class="sg-list__item">
+                            <a href="/docs">Index</a>
+                        </li>
+                    {{/if}}
+                    {{#each docs }}
+                        <li class="sg-list__item{{#if isActive}} sg-list__item--active{{/if}}">
+                            <a href="/docs/{{id}}">{{label}}</a>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </aside>
+        <article class="sg-docs__content">
+            {{{currentDoc.content}}}
+        </article>
+    </div>
+</div>

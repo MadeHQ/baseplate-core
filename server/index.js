@@ -1,16 +1,18 @@
 'use strict';
 
 var path = require('path');
+var glob = require('glob');
 var auth = require('http-auth');
+var express = require('express');
+var expressHbs = require('express-handlebars');
+
 var assign = require('lodash/assign');
 var defaults = require('lodash/defaults');
 var dropRight = require('lodash/dropRight');
-var express = require('express');
-var expressHbs = require('express-handlebars');
 var flatten = require('lodash/flatten');
-var glob = require('glob');
 var includes = require('lodash/includes');
 var last = require('lodash/last');
+
 var routes = require('./routes');
 var helpers = require('./helpers');
 var plugins = require('./lib/plugins');
@@ -124,6 +126,16 @@ module.exports = function (options, helperPlugins) {
             maxAge: includes(['production'], process.env.NODE_ENV) ? '90s' : '0'
         }));
     });
+
+    /**
+     * Documentation
+     * @type {[type]}
+     */
+    var docFiles = glob.sync(`${path.resolve(APP_DIR, 'docs')}/*.md`);
+    if (docFiles.length) {
+        app.locals.hasDocs = true;
+        app.use('/docs', routes.docs(docFiles));
+    }
 
     return new Promise(function (resolve) {
         /**

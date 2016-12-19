@@ -135,6 +135,12 @@ body {
     padding-left: 0;
     font-family: sans-serif !important;
 }
+.sg-list__item--active {
+    font-weight: bold;
+}
+.sg-list__item--active a {
+    font-weight: inherit;
+}
 
 /* ==========================================================================
    Patterns
@@ -336,4 +342,30 @@ body {
 }
 .sg-font-stack__caption__meta {
     float: right;
+}
+
+
+/* ==========================================================================
+   Docs
+   ========================================================================== */
+
+.sg-docs {}
+@media only screen and ( min-width: 45em ) {
+    .sg-docs {
+        display: flex;
+    }
+    .sg-docs__toc {
+        flex: 0 0 200px;
+        padding-right: 20px;
+    }
+
+}
+
+.sg-toc {
+   margin: 10px 0;
+}
+.sg-toc__title {
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    padding-bottom: .2em;
 }
