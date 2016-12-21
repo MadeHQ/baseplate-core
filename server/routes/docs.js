@@ -15,7 +15,7 @@ module.exports = function (docFiles) {
 
     var converter = new showdown.Converter();
 
-    var docsHtml = docFiles.map(function(docFile) {
+    var docsHtml = docFiles.map(function (docFile) {
         // Strip digits from start of label (i.e. 1.)
         var label = path.basename(docFile, path.extname(docFile)).replace(/^\d*\.\s/, '');
         return {
@@ -28,7 +28,7 @@ module.exports = function (docFiles) {
     var docsList = reject(docsHtml, x => x.id === 'index');
 
     function markActiveDoc(docsList, currentId) {
-        return docsList.map(function(doc) {
+        return docsList.map(function (doc) {
             doc.isActive = doc.id === currentId;
             return doc;
         });

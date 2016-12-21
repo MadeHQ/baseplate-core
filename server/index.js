@@ -132,7 +132,7 @@ module.exports = function (options, helperPlugins) {
      * @type {[type]}
      */
     var docFiles = glob.sync(`${path.resolve(APP_DIR, 'docs')}/*.md`);
-    if (docFiles.length) {
+    if (docFiles && docFiles.length > 0) {
         app.locals.hasDocs = true;
         app.use('/docs', routes.docs(docFiles));
     }
