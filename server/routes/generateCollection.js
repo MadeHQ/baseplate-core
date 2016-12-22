@@ -47,8 +47,9 @@ module.exports = function (sectionConfig, directory, items, partials, data, clie
         let collections = getCollections();
         let group = find(collections, (_, key) => key === req.params.group);
         let result = find(group, x => x.id === req.params.id);
-        result.pageSlug = sectionConfig.path.replace('/', '');
+
         if (result) {
+            result.pageSlug = sectionConfig.path.replace('/', '');
             res.render(path.resolve(clientDir, 'standalone'), result);
         } else {
             res.sendStatus(404);

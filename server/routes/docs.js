@@ -13,7 +13,9 @@ module.exports = function (docFiles) {
         mergeParams: true
     });
 
-    var converter = new showdown.Converter();
+    var converter = new showdown.Converter({
+        tables: true
+    });
 
     var docsHtml = docFiles.map(function (docFile) {
         // Strip digits from start of label (i.e. 1.)
