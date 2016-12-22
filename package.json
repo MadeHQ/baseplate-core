@@ -1,7 +1,7 @@
 {
   "name": "baseplate-core",
   "main": "server/index.js",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "license": "MIT",
   "description": "A tool for building prototypes and pattern libraries.",
   "author": "Made Media Ltd. <developers@mademedia.co.uk> (made.media)",
@@ -53,7 +53,8 @@
     "minimist": "1.2.0",
     "morgan": "1.7.0",
     "require-directory": "2.1.1",
-    "showdown": "1.5.3"
+    "showdown": "1.5.3",
+    "url-slug": "2.0.0"
   },
   "devDependencies": {
     "ava": "0.17.0",

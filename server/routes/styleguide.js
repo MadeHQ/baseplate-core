@@ -2,24 +2,26 @@
 
 var path = require('path');
 var express = require('express');
+var showdown = require('showdown');
 var swatches = require('../lib/swatches');
-var styleguideDefaults = require('../styleguide-defaults.json');
 
-var router = new express.Router({
-    mergeParams: true
-});
-
-router.get('/', function (req, res) {
-    let locals = req.app.locals;
-    let styleguide = Object.assign(
-        styleguideDefaults,
-        locals.styleguideOptions
-    );
-    res.render(path.resolve(locals.clientDir, 'styleguide'), {
-        intro: styleguide.intro,
-        colors: swatches(styleguide.colors),
-        fontStacks: styleguide.fontStacks
+module.exports = function (styleguide) {
+    var router = new express.Router({
+        mergeParams: true
     });
-});
 
-module.exports = router;
+    var converter = new showdown.Converter();
+
+    router.get('/', function (req, res) {
+        var locals = req.app.locals;
+        res.render(path.resolve(locals.clientDir, 'styleguide'), {
+            title: styleguide.title,
+            introduction: styleguide.introduction && converter.makeHtml(styleguide.introduction),
+            colors: swatches(styleguide.colors),
+            fontStacks: styleguide.fontStacks,
+            pageSlug: 'styleguide'
+        });
+    });
+
+    return router;
+};

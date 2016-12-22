@@ -27,6 +27,7 @@ module.exports = function (sectionConfig, directory, items, partials, data, clie
     router.get('/', function (req, res) {
         res.render(path.resolve(clientDir, 'collection'), {
             basePath: sectionConfig.path,
+            pageSlug: sectionConfig.path.replace('/', ''),
             groups: getCollections()
         });
     });
@@ -37,6 +38,7 @@ module.exports = function (sectionConfig, directory, items, partials, data, clie
         group[req.params.group] = find(collections, (_, key) => key === req.params.group);
         res.render(path.resolve(clientDir, 'collection'), {
             basePath: sectionConfig.path,
+            pageSlug: sectionConfig.path.replace('/', ''),
             groups: group
         });
     });
@@ -45,7 +47,9 @@ module.exports = function (sectionConfig, directory, items, partials, data, clie
         let collections = getCollections();
         let group = find(collections, (_, key) => key === req.params.group);
         let result = find(group, x => x.id === req.params.id);
+
         if (result) {
+            result.pageSlug = sectionConfig.path.replace('/', '');
             res.render(path.resolve(clientDir, 'standalone'), result);
         } else {
             res.sendStatus(404);

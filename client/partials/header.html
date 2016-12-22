@@ -4,5 +4,8 @@
         {{#each config.sections as |section|}}
             <li class="sg-header__item"><a class="sg-header__link" href="{{section.path}}">{{section.title}}</a></li>
         {{/each}}
+        {{#if hasDocs}}
+            <li class="sg-header__item"><a class="sg-header__link" href="/docs">Docs</a></li>
+        {{/if}}
     </ul>
 </div>

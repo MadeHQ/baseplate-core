@@ -1,46 +1,49 @@
 'use strict';
 
 var path = require('path');
+var glob = require('glob');
+var auth = require('http-auth');
 var express = require('express');
 var expressHbs = require('express-handlebars');
-var auth = require('http-auth');
-var glob = require('glob');
-var includes = require('lodash/includes');
+
+var assign = require('lodash/assign');
 var defaults = require('lodash/defaults');
 var dropRight = require('lodash/dropRight');
-var last = require('lodash/last');
 var flatten = require('lodash/flatten');
+var includes = require('lodash/includes');
+var last = require('lodash/last');
+
 var routes = require('./routes');
 var helpers = require('./helpers');
 var plugins = require('./lib/plugins');
 var templateData = require('./lib/templateData');
-
-var AUTH_USER = process.env.AUTH_USER;
-var AUTH_PASSWORD = process.env.AUTH_PASSWORD;
-var APP_DIR = path.dirname(require.main.filename);
+var styleguideDefaults = require('./styleguide-defaults.json');
 
 var app = express();
+
+var APP_DIR = path.dirname(require.main.filename);
 
 if (
     includes(['production'], process.env.NODE_ENV) &&
     process.env.AUTH_USER &&
     process.env.AUTH_PASSWORD
 ) {
-    let basicAuth = auth.basic({
+    app.use(auth.connect(auth.basic({
         realm: 'Preview'
     }, function (username, password, callback) {
-        callback(username === AUTH_USER && password === AUTH_PASSWORD);
-    });
-
-    app.use(auth.connect(basicAuth));
+        callback(
+            username === process.env.AUTH_USER &&
+            password === process.env.AUTH_PASSWORD
+        );
+    })));
 }
 
 app.use(require('morgan')('dev'));
 app.use(require('compression')());
 app.use(require('errorhandler')());
 
-module.exports = function (styleguideOptions, options, helperPlugins) {
-    const config = defaults(options, {
+module.exports = function (options, helperPlugins) {
+    const config = defaults(options.config, {
         ext: 'html',
         port: process.env.PORT || 4444,
         staticPaths: ['static', 'examples'],
@@ -102,7 +105,6 @@ module.exports = function (styleguideOptions, options, helperPlugins) {
 
     app.locals.config = config;
     app.locals.clientDir = clientDir;
-    app.locals.styleguideOptions = styleguideOptions;
 
     app.locals.tmplData = (function () {
         let dataDir = path.resolve(APP_DIR, config.dataDir);
@@ -115,14 +117,35 @@ module.exports = function (styleguideOptions, options, helperPlugins) {
     app.set('view engine', config.ext);
     app.set('views', componentsDir);
 
-    app.use('/baseplate', express.static(path.resolve(clientDir, 'static')));
+    app.use('/baseplate', express.static(path.resolve(clientDir, 'static'), {
+        maxAge: '120s'
+    }));
 
     config.staticPaths.forEach(function (staticPath) {
-        app.use('/' + staticPath, express.static(path.resolve(APP_DIR, staticPath)));
+        app.use('/' + staticPath, express.static(path.resolve(APP_DIR, staticPath), {
+            maxAge: includes(['production'], process.env.NODE_ENV) ? '90s' : '0'
+        }));
     });
 
+    /**
+     * Documentation
+     * @type {[type]}
+     */
+    var docFiles = glob.sync(`${path.resolve(APP_DIR, 'docs')}/*.md`);
+    if (docFiles && docFiles.length > 0) {
+        app.locals.hasDocs = true;
+        app.use('/docs', routes.docs(docFiles));
+    }
+
     return new Promise(function (resolve) {
-        app.use('/', routes.styleguide);
+        /**
+         * Index route: Styleguide template
+         */
+        app.use('/', routes.styleguide(assign(
+            {},
+            styleguideDefaults,
+            options.styleguide
+        )));
 
         var promises = config.sections.map(section => {
             let tmpls = hbs.getTemplates(path.resolve(componentsDir, section.directory));

@@ -29,6 +29,7 @@ module.exports = function (sectionConfig, items, partials, data, clientDir) {
     router.get('/', function (req, res) {
         res.render(path.resolve(clientDir, 'list'), {
             basePath: sectionConfig.path,
+            pageSlug: sectionConfig.path.replace('/', ''),
             items: getItems(req)
         });
     });
@@ -36,6 +37,7 @@ module.exports = function (sectionConfig, items, partials, data, clientDir) {
     router.get('/:id?', function (req, res) {
         let results = getItems(req);
         let result = find(results, x => x.id === req.params.id);
+        result.pageSlug = sectionConfig.path.replace('/', '');
         if (result) {
             res.render(path.resolve(clientDir, 'standalone'), result);
         } else {
