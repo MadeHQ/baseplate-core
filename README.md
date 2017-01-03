@@ -18,17 +18,24 @@ Handlebars is a logicless templating engine so you need helpers to do anything i
 
 | Helper | Description
 |---|---|---|
+|`{{capitalize 'example'}}` | Capitalize a given string |
+|`{{couldBeTrue threshold}}`| Returns `true/false` based on `threshold`, e.g. `0.9` will return `true` 90% of the time. |
+| `{{debug object}}` | Will log the provided value to the console |
 |`{{envIs 'production'}}`  | Check the current environment |
 |`{{envIsNot 'production'}}` | Reverse of `envIs` check |
-|`{{capitalize 'production'}}` | Capitalize a string |
 |`{{getOrElse maybeValue "Default" }}`| Get a value if it exists otherwise return a default |
-|`{{#repeat count}}block{{/repeat}}`| Repeat a block `count` times |
-|`{{#repeatRange min max}}block{{/repeatRange}}`| Repeat a block between `min` and `max` times |
-|`{{couldBeTrue threshold}}`| Returns `true/false` based on `threshold`, e.g. `0.9` will return `true` 90% of the time. |
+|`{{htmlEscape '<h1>Hello</h1>'}}` | Escape HTML entities |
+|`{{inlineFile 'path/to/file.ext'}}`| Returns the contents of a file |
+|`{{isEqual value1 value2)}}` | Test if two values are equal | 
+|`{{isUndefined value}}` | Test if a value is undefined |
 |`{{lorem count}}`| Lorem ipsum generator. Returns `count` sentences |
 |`{{loremWords min max}}`| Lorem ipsum generator. Returns random words between `min` and `max` |
-|`{{inlineFile 'path/to/file.ext'}}`| Returns the contents of a file |
+|`{{prefixClass array 'letter'}}` | Takes an array of values and adds a prefix |
+|`{{{{raw}}}}Raw {{block}} helper{{{{/raw}}}}` | Block helper which disables handlebars processing for contents |
 |`{{#queryString 'param' matches='value' }}` | Block helper to check if a query string parameter matches a certain value |
+|`{{#repeat count}}block{{/repeat}}`| Repeat a block `count` times |
+|`{{#repeatRange min max}}block{{/repeatRange}}`| Repeat a block between `min` and `max` times |
+|`{{stringify obj }}` | Passes input to `JSON.stringify`. Useful for debugging |
 
 ### Common Variables
 
@@ -42,13 +49,25 @@ A handful of root level common variables are exposed for use in templates. They 
 
 ### Partials
 
-Everything under `components/patterns` is automatically registered as a partial. For example `{{> objects/icon}}` will render `components/patterns/objects/icon.html`). This is powerful for making components comprised of other components.
+Everything under `components/patterns` is automatically registered as a partial. For example `{{> patterns/objects/icon}}` will render `components/patterns/objects/icon.html`). This is powerful for making components comprised of other components.
 
-### Usage notes
+### Usage Notes
 
 You can add markdown files in the `patterns/` directory and the contents will be displayed alongside the pattern. The file needs to be named the same as the pattern e.g., `patterns/base/text.md` alongside `patterns/base/text.html`.
 
-### Stub data
+### Default Collection Mock Data
+
+Any pattern in a collecion can have default JSON data to be rendered in a collections list view. The file needs to be named the same as the file e.g., `patterns/base/text.json` alongside `patterns/base/text.html`. The format is:
+
+```
+{
+	"defaults": [{}]"
+}
+```
+
+If more than one object is provided in the `"defaults"` array the app will randomly select an item from the array. Useful for providing a few variations of mock data.
+
+### Global Mock data
 
 All JSON files under `data/` are concatenated into one context for the templates. E.g. `users.json` containing `[]` and `profile.json` containing `{}` will result in the following data for the templates:
 
@@ -146,6 +165,7 @@ Available options are as follows:
 |`directory` | Directory, relative to `components/` |
 |`partials` | Should these items be available as partials?. If so they will be namespaced under the directory name, e.g. `{{> patterns/a/b }}` |
 |`showUsage` | If enabled and there is a `.md` file with the same name as the file (e.g., `example.html` and `example.md` then usage notes will be shown alongside the item. Only available for **`collection`** type. |
+| `showSource` | If enabled a "Show source" button will be shown to show the raw Handlebars source for the template |
 |`ordering ` | By default collections will be ordered by directory name, if you want to customise the order, or exclude a directory from listings (but still have it available as partials) then a custom ordering will let you do this. Only available for **`collection`** type. |
 
 
@@ -182,11 +202,10 @@ For example:
 Add a `server.js` using the following template.
 
 ```
-var baseplate = require('baseplate-core');
-var styleguide = require('./baseplate-styleguide.json');
-var config = require('./baseplate-config.json');
+var baseplateConfig = require('./baseplate-config.json');
+var baseplate = require('baseplate-core')(baseplateConfig);
 
-baseplate(styleguide, config).then(function (server) {
+baseplate(baseplateConfig).then(function (server) {
     server.start();
 });
 ```
@@ -196,7 +215,7 @@ Run it with `node server.js`
 ## API
 
 ```
-baseplate(styleguide<Object>, [config<Object>]) // returns <Promise>
+baseplate(config<Object>) // returns <Promise>
 ```
 
 ```

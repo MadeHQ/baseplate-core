@@ -2,10 +2,15 @@
 
 var fs = require('fs');
 var path = require('path');
-var _ = require('lodash');
+var assign = require('lodash/assign');
+var capitalize = require('lodash/capitalize');
+var get = require('lodash/get');
+var groupBy = require('lodash/groupBy');
+var map = require('lodash/map');
+var sample = require('lodash/sample');
 var usageNotes = require('./usageNotes');
 
-const labelFromSlug = slug => _.capitalize(slug.replace(/-/g, ' '));
+const labelFromSlug = slug => capitalize(slug.replace(/-/g, ' '));
 
 const customOrdering = (ordering, items) => {
     let o = {};
@@ -13,21 +18,6 @@ const customOrdering = (ordering, items) => {
         o[k] = items[k];
     });
     return o;
-};
-
-const pages = (templates, options) => {
-    options = options || {};
-    return _.map(templates, (value, key) => {
-        let id = path.basename(key, path.extname(key));
-        return {
-            id: id,
-            label: labelFromSlug(id),
-            content: value(options.data || {}, {
-                partials: options.partials || {},
-                helpers: options.helpers || {}
-            })
-        };
-    });
 };
 
 const getUsage = (dir, filename) => {
@@ -43,27 +33,81 @@ const getRawTemplate = (dir, filename) => {
     return rawTemplate;
 };
 
-const getPatterns = (templates, options) => {
-    return _.chain(templates).map((value, key) => {
+/**
+ * Try to find a json file for a pattern (e.g card.json)
+ * Format: { defaults: [{}]}
+ * Then pick a random item from the defaults choices.
+ * Allows default mock data for a pattern, but with randomness
+ */
+const getDefaultPatternData = (dir, filename) => {
+    var data;
+    try {
+        var filepath = path.resolve(dir, filename.replace(path.extname(filename), '.json'));
+        var jsonData = fs.readFileSync(filepath, 'utf-8');
+        jsonData = JSON.parse(jsonData);
+
+        var dataCandidates = get(jsonData, 'defaults');
+        data = sample(dataCandidates);
+    } catch (err) { }
+    return data;
+};
+
+const pages = (templates, options) => {
+    options = options || {};
+    return map(templates, (value, key) => {
         let id = path.basename(key, path.extname(key));
         return {
             id: id,
             label: labelFromSlug(id),
-            group: key.split(path.sep)[0],
-            usage: (options.usage) ? getUsage(options.directory, key) : false,
-            rawTemplate: (options.showSource) ? getRawTemplate(options.directory, key) : false,
             content: value(options.data || {}, {
                 partials: options.partials || {},
                 helpers: options.helpers || {}
             })
         };
-    }).groupBy(data => data.group).value();
+    });
 };
 
 const patterns = (templates, options) => {
     options = options || {};
-    var items = getPatterns(templates, options);
-    return (options.ordering) ? customOrdering(options.ordering, items) : items;
+    var items = map(templates, (value, key) => {
+        var id = path.basename(key, path.extname(key));
+
+        var templateData = assign(
+            {},
+            options.data,
+            getDefaultPatternData(options.directory, key) || {}
+        );
+
+        var usage = false;
+        if (options.usage) {
+            usage = getUsage(options.directory, key);
+        }
+
+        var rawTemplate = false;
+        if (options.showSource) {
+            rawTemplate = getRawTemplate(options.directory, key);
+        }
+
+        return {
+            id: id,
+            label: labelFromSlug(id),
+            group: key.split(path.sep)[0],
+            usage: usage,
+            rawTemplate: rawTemplate,
+            content: value(templateData, {
+                partials: options.partials || {},
+                helpers: options.helpers || {}
+            })
+        };
+    });
+
+    var groupedItems = groupBy(items, data => data.group);
+
+    if (options.ordering) {
+        return customOrdering(options.ordering, groupedItems);
+    }
+
+    return groupedItems;
 };
 
 module.exports = {
