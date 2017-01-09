@@ -53,7 +53,7 @@
     "minimist": "1.2.0",
     "morgan": "1.7.0",
     "require-directory": "2.1.1",
-    "showdown": "1.5.5",
+    "showdown": "1.6.0",
     "url-slug": "2.0.0"
   },
   "devDependencies": {
