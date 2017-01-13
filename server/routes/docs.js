@@ -42,7 +42,8 @@ module.exports = function (docFiles) {
             res.render(path.resolve(req.app.locals.clientDir, 'docsEntry'), {
                 isIndex: true,
                 docs: markActiveDoc(docsList, 'index'),
-                currentDoc: match
+                currentDoc: match,
+                pageSlug: 'docs'
             });
         } else {
             res.sendStatus(404);
@@ -56,7 +57,8 @@ module.exports = function (docFiles) {
             res.render(path.resolve(req.app.locals.clientDir, 'docsEntry'), {
                 isIndex: false,
                 docs: markActiveDoc(docsList, req.params.id),
-                currentDoc: match
+                currentDoc: match,
+                pageSlug: 'docs'
             });
         } else {
             res.sendStatus(404);
