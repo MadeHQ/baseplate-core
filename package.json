@@ -40,12 +40,12 @@
     }
   },
   "dependencies": {
-    "color": "1.0.2",
+    "color": "1.0.3",
     "compression": "1.6.2",
     "errorhandler": "1.5.0",
-    "express": "4.14.0",
+    "express": "4.14.1",
     "express-handlebars": "3.0.0",
-    "glob": "7.1.0",
+    "glob": "7.1.1",
     "handlebars": "4.0.6",
     "http-auth": "3.1.1",
     "lodash": "4.17.4",
@@ -53,15 +53,15 @@
     "minimist": "1.2.0",
     "morgan": "1.7.0",
     "require-directory": "2.1.1",
-    "showdown": "1.6.0",
+    "showdown": "1.6.2",
     "url-slug": "2.0.0"
   },
   "devDependencies": {
     "ava": "0.17.0",
-    "clean-css": "3.4.24",
+    "clean-css": "4.0.3",
     "nsp": "2.6.2",
     "pre-commit": "1.2.2",
-    "temp-write": "2.1.0",
+    "temp-write": "3.0.0",
     "uglifyjs": "2.4.10",
     "xo": "0.17.1"
   }
