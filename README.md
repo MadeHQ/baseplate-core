@@ -1,8 +1,6 @@
 # baseplate-core
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/MadeHQ/baseplate-core.svg)](https://greenkeeper.io/)
-
-[![Circle CI](https://img.shields.io/circleci/project/github/MadeHQ/baseplate-core/master.svg)](https://circleci.com/gh/MadeHQ/baseplate-core/tree/master) [![npm](https://img.shields.io/npm/v/baseplate-core.svg)](https://www.npmjs.com/package/baseplate-core) [![Dependencies](https://david-dm.org/madehq/baseplate-core.svg)](https://david-dm.org/madehq/baseplate-core) [![Dev Dependencies](https://david-dm.org/madehq/baseplate-core/dev-status.svg)](https://david-dm.org/madehq/baseplate-core#info=devDependencies&view=table)
+[![Circle CI](https://img.shields.io/circleci/project/github/MadeHQ/baseplate-core/master.svg)](https://circleci.com/gh/MadeHQ/baseplate-core/tree/master) [![npm](https://img.shields.io/npm/v/baseplate-core.svg)](https://www.npmjs.com/package/baseplate-core)
 
 A tool for building prototypes and pattern libraries.
 
@@ -28,7 +26,7 @@ Handlebars is a logicless templating engine so you need helpers to do anything i
 |`{{getOrElse maybeValue "Default" }}`| Get a value if it exists otherwise return a default |
 |`{{htmlEscape '<h1>Hello</h1>'}}` | Escape HTML entities |
 |`{{inlineFile 'path/to/file.ext'}}`| Returns the contents of a file |
-|`{{isEqual value1 value2)}}` | Test if two values are equal | 
+|`{{isEqual value1 value2)}}` | Test if two values are equal |
 |`{{isUndefined value}}` | Test if a value is undefined |
 |`{{lorem count}}`| Lorem ipsum generator. Returns `count` sentences |
 |`{{loremWords min max}}`| Lorem ipsum generator. Returns random words between `min` and `max` |
