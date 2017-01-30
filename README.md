@@ -1,5 +1,7 @@
 # baseplate-core
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/MadeHQ/baseplate-core.svg)](https://greenkeeper.io/)
+
 [![Circle CI](https://img.shields.io/circleci/project/github/MadeHQ/baseplate-core/master.svg)](https://circleci.com/gh/MadeHQ/baseplate-core/tree/master) [![npm](https://img.shields.io/npm/v/baseplate-core.svg)](https://www.npmjs.com/package/baseplate-core) [![Dependencies](https://david-dm.org/madehq/baseplate-core.svg)](https://david-dm.org/madehq/baseplate-core) [![Dev Dependencies](https://david-dm.org/madehq/baseplate-core/dev-status.svg)](https://david-dm.org/madehq/baseplate-core#info=devDependencies&view=table)
 
 A tool for building prototypes and pattern libraries.
