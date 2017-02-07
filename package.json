@@ -51,14 +51,14 @@
     "lodash": "4.17.4",
     "lorem-ipsum": "1.0.3",
     "minimist": "1.2.0",
-    "morgan": "1.7.0",
+    "morgan": "1.8.0",
     "require-directory": "2.1.1",
-    "showdown": "1.6.2",
+    "showdown": "1.6.4",
     "url-slug": "2.0.0"
   },
   "devDependencies": {
-    "ava": "0.18.1",
-    "clean-css": "4.0.3",
+    "ava": "0.17.0",
+    "clean-css": "4.0.4",
     "nsp": "2.6.2",
     "pre-commit": "1.2.2",
     "temp-write": "3.0.0",
