@@ -10,7 +10,6 @@ var assign = require('lodash/assign');
 var defaults = require('lodash/defaults');
 var dropRight = require('lodash/dropRight');
 var flatten = require('lodash/flatten');
-var includes = require('lodash/includes');
 var last = require('lodash/last');
 
 var routes = require('./routes');
@@ -23,11 +22,7 @@ var app = express();
 
 var APP_DIR = path.dirname(require.main.filename);
 
-if (
-    includes(['production'], process.env.NODE_ENV) &&
-    process.env.AUTH_USER &&
-    process.env.AUTH_PASSWORD
-) {
+if (process.env.AUTH_USER && process.env.AUTH_PASSWORD) {
     app.use(auth.connect(auth.basic({
         realm: 'Preview'
     }, function (username, password, callback) {
@@ -122,9 +117,7 @@ module.exports = function (options, helperPlugins) {
     }));
 
     config.staticPaths.forEach(function (staticPath) {
-        app.use('/' + staticPath, express.static(path.resolve(APP_DIR, staticPath), {
-            maxAge: includes(['production'], process.env.NODE_ENV) ? '90s' : '0'
-        }));
+        app.use('/' + staticPath, express.static(path.resolve(APP_DIR, staticPath)));
     });
 
     /**
