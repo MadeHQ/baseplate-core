@@ -51,7 +51,7 @@
     "lodash": "4.17.4",
     "lorem-ipsum": "1.0.3",
     "minimist": "1.2.0",
-    "morgan": "1.8.0",
+    "morgan": "1.8.1",
     "require-directory": "2.1.1",
     "showdown": "1.6.4",
     "url-slug": "2.0.0"
