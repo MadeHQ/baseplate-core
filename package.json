@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "ava": "0.17.0",
-    "clean-css": "4.0.7",
+    "clean-css": "4.0.8",
     "nsp": "2.6.2",
     "pre-commit": "1.2.2",
     "temp-write": "3.1.0",
