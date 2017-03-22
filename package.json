@@ -57,9 +57,9 @@
     "url-slug": "2.0.0"
   },
   "devDependencies": {
-    "ava": "0.17.0",
+    "ava": "0.18.2",
     "clean-css": "4.0.7",
-    "nsp": "2.6.2",
+    "nsp": "2.6.3",
     "pre-commit": "1.2.2",
     "temp-write": "3.1.0",
     "uglifyjs": "2.4.10",
