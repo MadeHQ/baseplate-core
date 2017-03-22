@@ -31,6 +31,7 @@
     "lint"
   ],
   "xo": {
+    "esnext": false,
     "space": 4,
     "rules": {
       "unicorn/filename-case": [
