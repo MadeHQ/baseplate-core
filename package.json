@@ -31,6 +31,7 @@
     "lint"
   ],
   "xo": {
+    "esnext": false,
     "space": 4,
     "rules": {
       "unicorn/filename-case": [
@@ -63,6 +64,6 @@
     "pre-commit": "1.2.2",
     "temp-write": "3.1.0",
     "uglifyjs": "2.4.10",
-    "xo": "0.17.1"
+    "xo": "0.18.0"
   }
 }
