@@ -16,8 +16,8 @@ Inspired heavily by [component-styleguide](https://github.com/webpro/component-s
 
 Handlebars is a logicless templating engine so you need helpers to do anything interesting in them. A set of helpers are provided in the templates to make prototyping as simple as possible.
 
-| Helper | Description
-|---|---|---|
+| Helper | Description |
+| ------ | ----------- |
 |`{{capitalize 'example'}}` | Capitalize a given string |
 |`{{couldBeTrue threshold}}`| Returns `true/false` based on `threshold`, e.g. `0.9` will return `true` 90% of the time. |
 | `{{debug object}}` | Will log the provided value to the console |
@@ -41,8 +41,8 @@ Handlebars is a logicless templating engine so you need helpers to do anything i
 
 A handful of root level common variables are exposed for use in templates. They are only available in **listings** as they are mostly used to get the current URL. If you need this data in a partial then pass it in as an argument.
 
-| Variable | Description
-|---|---|---|
+| Variable | Description |
+| -------- | ----------- |
 | `{{@root.link}}` | Relative link to the current page |
 | `{{@root.absoluteLink}}` | Absolute link to the current page |
 | `{{@root.queryString}}` | Raw query string object |
@@ -157,8 +157,8 @@ You can configure any custom sections you want in `baseplate-config.json`, by ad
 
 Available options are as follows:
 
-| Option | Description
-|---|---|---|
+| Option | Description |
+| ------ | ----------- |
 |`type` | Type of view: either `list` or `collection` |
 |`title` | Navigation title, shown in toolbar |
 |`path` | URL path |
