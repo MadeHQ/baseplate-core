@@ -50,7 +50,7 @@
     "handlebars": "4.0.6",
     "http-auth": "3.1.2",
     "lodash": "4.17.4",
-    "lorem-ipsum": "1.0.3",
+    "lorem-ipsum": "1.0.4",
     "minimist": "1.2.0",
     "morgan": "1.8.1",
     "require-directory": "2.1.1",
