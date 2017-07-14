@@ -2,6 +2,7 @@
 
 var path = require('path');
 var glob = require('glob');
+var getPort = require('get-port');
 var auth = require('http-auth');
 var express = require('express');
 var expressHbs = require('express-handlebars');
@@ -40,7 +41,6 @@ app.use(require('errorhandler')());
 module.exports = function (options, helperPlugins) {
     const config = defaults(options.config, {
         ext: 'html',
-        port: process.env.PORT || 4444,
         staticPaths: ['static', 'examples'],
         dataDir: 'data',
         componentsDir: 'components',
@@ -107,7 +107,6 @@ module.exports = function (options, helperPlugins) {
         return templateData(dataFiles);
     })();
 
-    app.set('port', config.port);
     app.engine(config.ext, hbs.engine);
     app.set('view engine', config.ext);
     app.set('views', componentsDir);
@@ -174,8 +173,17 @@ module.exports = function (options, helperPlugins) {
             resolve({
                 app: app,
                 start: function () {
-                    return app.listen(app.get('port'), function () {
-                        console.info('Server started on port %s', app.get('port'));
+                    var preferredPort = process.env.PORT || 5000;
+                    getPort(preferredPort).then(port => {
+                        app.listen(port, () => {
+                            if (parseInt(port, 10) === parseInt(preferredPort, 10)) {
+                                console.info(`Server started on port ${port}`);
+                            } else {
+                                console.info(`Prefrerred port ${preferredPort} unavailable using port ${port} instead`);
+                            }
+
+                            console.info(`Open up http://localhost:${port} to view the app`);
+                        });
                     });
                 }
             });
