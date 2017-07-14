@@ -1,7 +1,7 @@
 {
   "name": "baseplate-core",
   "main": "server/index.js",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "license": "MIT",
   "description": "A tool for building prototypes and pattern libraries.",
   "author": "Made Media Ltd. <developers@mademedia.co.uk> (made.media)",
@@ -46,6 +46,7 @@
     "errorhandler": "1.5.0",
     "express": "4.14.1",
     "express-handlebars": "3.0.0",
+    "get-port": "3.1.0",
     "glob": "7.1.1",
     "handlebars": "4.0.10",
     "http-auth": "3.2.3",
