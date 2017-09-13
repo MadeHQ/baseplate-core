@@ -1,6 +1,7 @@
 'use strict';
 
 var path = require('path');
+var process = require('process');
 var glob = require('glob');
 var getPort = require('get-port');
 var auth = require('http-auth');
@@ -21,7 +22,7 @@ var styleguideDefaults = require('./styleguide-defaults.json');
 
 var app = express();
 
-var APP_DIR = path.dirname(require.main.filename);
+var APP_DIR = process.cwd();
 
 if (process.env.AUTH_USER && process.env.AUTH_PASSWORD) {
     app.use(auth.connect(auth.basic({
@@ -172,10 +173,10 @@ module.exports = function (options, helperPlugins) {
         return Promise.all(promises).then(function () {
             resolve({
                 app: app,
-                start: function () {
+                start: function (callback) {
                     var preferredPort = process.env.PORT || 5000;
                     getPort(preferredPort).then(port => {
-                        app.listen(port, () => {
+                        const server = app.listen(port, () => {
                             if (parseInt(port, 10) === parseInt(preferredPort, 10)) {
                                 console.info(`Server started on port ${port}`);
                             } else {
@@ -183,6 +184,10 @@ module.exports = function (options, helperPlugins) {
                             }
 
                             console.info(`Open up http://localhost:${port} to view the app`);
+
+                            if (callback) {
+                                callback(server);
+                            }
                         });
                     });
                 }
