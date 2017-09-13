@@ -19,7 +19,7 @@
     "prototyping"
   ],
   "scripts": {
-    "clientJs": "cd client/static/ && uglifyjs baseplate.js -o baseplate.min.js",
+    "clientJs": "cd client/static/ && uglifyjs baseplate.js --output baseplate.min.js",
     "clientCss": "cd client/static/ && cleancss baseplate.css -o baseplate.min.css",
     "build": "npm run clientJs && npm run clientCss",
     "lint": "xo -- server/{*,**/*}.js client/*.js",
@@ -61,10 +61,11 @@
   "devDependencies": {
     "ava": "0.22.0",
     "clean-css": "4.1.8",
+    "clean-css-cli": "4.1.9",
     "nsp": "2.8.0",
     "pre-commit": "1.2.2",
     "temp-write": "3.3.0",
-    "uglifyjs": "2.4.11",
+    "uglify-js": "3.1.0",
     "xo": "0.19.0"
   }
 }
