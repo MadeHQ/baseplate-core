@@ -59,7 +59,7 @@
     "url-slug": "2.0.0"
   },
   "devDependencies": {
-    "ava": "0.22.0",
+    "ava": "0.23.0",
     "clean-css": "4.1.8",
     "clean-css-cli": "4.1.9",
     "nsp": "2.8.0",
