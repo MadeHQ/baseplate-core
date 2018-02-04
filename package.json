@@ -50,7 +50,7 @@
     "glob": "7.1.1",
     "handlebars": "4.0.10",
     "http-auth": "3.2.3",
-    "lodash": "4.17.4",
+    "lodash": "4.17.5",
     "lorem-ipsum": "1.0.4",
     "minimist": "1.2.0",
     "morgan": "1.8.2",
