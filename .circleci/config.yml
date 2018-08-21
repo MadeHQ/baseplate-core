@@ -1,32 +1,70 @@
-version: 2
-jobs:
-  build:
-    docker:
-    - image: circleci/node:9.4.0
-    steps:
-    - checkout
-    - run: 
-        name: Install Node 6.9.2
-        command: |
-            set +e
-            touch $BASH_ENV  
-            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-            echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
-            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-            echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> $BASH_ENV
-            echo 'nvm install 6.9.2' >> $BASH_ENV
-            echo 'nvm alias default 6.9.2' >> $BASH_ENV
-    - restore_cache:
-        keys:
-        - v1-dep-{{ .Branch }}-
-        - v1-dep-master-
-        - v1-dep-
-    - run: if [ -z "${NODE_ENV:-}" ]; then export NODE_ENV=test; fi
-    - run: export PATH="~/MadeHQ/baseplate-core/node_modules/.bin:$PATH"
-    - run: npm install
-    - save_cache:
-        key: v1-dep-{{ .Branch }}-{{ epoch }}
-        paths:
-        - ./node_modules
-    - run: npm test
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+#version: 2
+#jobs:
+#  build:
+#    docker:
+#      # specify the version you desire here
+#      - image: circleci/node:7.10
+#
+     # Specify service dependencies here if necessary
+     # CircleCI maintains a library of pre-built images
+     # documented at https://circleci.com/docs/2.0/circleci-images/
+     # - image: circleci/mongo:3.4.4
 
+#    working_directory: ~/syos-drphillipscenter
+
+#    steps:
+#      - checkout
+
+     # Download and cache dependencies
+#      - restore_cache:
+#          keys:
+#          - v1-dependencies-{{ checksum "package.json" }}
+#          - v1-dependencies
+
+#      - run: yarn install
+
+#      - save_cache:
+#          paths:
+#            - node_modules
+#          key: v1-dependencies-{{ checksum "package.json" }}
+
+     # run tests!
+#      - run: yarn test
+#      - run: yarn build
+
+#      - persist_to_workspace:
+#          root: ~/syos-drphillipscenter
+#          paths:
+#            - dist
+
+#  deploy-test:
+#    docker:
+#      - image: circleci/node:7.10
+#    working_directory: ~/syos-drphillipscenter
+#    steps:
+#      - attach_workspace:
+#          at: ~/syos-drphillipscenter
+#      - run: sudo apt install python-pip python-dev
+#      - run: sudo pip install awscli
+#      - run:
+#          name: Deploy to S3 if tests pass and branch is develop
+#          command: |
+#            echo "Deploying develop branch to unstable"
+#            aws s3 sync ~/syos-drphillipscenter/dist s3://made-syos/drphillipscenter/releases/unstable/ --cache-control 'max-age=60, no-transform, public' --acl public-read
+
+#  deploy-staging:
+#    docker:
+#      - image: circleci/node:7.10
+#    working_directory: ~/syos-drphillipscenter
+#    steps:
+#      - attach_workspace:
+#          at: ~/syos-drphillipscenter
+#      - run: sudo apt install python-pip python-dev
+#      - run: sudo pip install awscli
+#      - run:
+#          name: Deploy to S3 if tests pass and branch is master
+#          command: |
