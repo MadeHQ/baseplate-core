@@ -64,7 +64,7 @@
     "clean-css-cli": "4.1.11",
     "nsp": "3.2.1",
     "pre-commit": "1.2.2",
-    "temp-write": "3.4.0",
+    "temp-write": "4.0.0",
     "uglify-js": "3.4.6",
     "xo": "0.21.1"
   }
