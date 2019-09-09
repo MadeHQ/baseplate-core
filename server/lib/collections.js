@@ -29,7 +29,8 @@ const getRawTemplate = (dir, filename) => {
     var rawTemplate;
     try {
         rawTemplate = fs.readFileSync(path.resolve(dir, filename), 'utf-8');
-    } catch (err) { }
+    } catch (error) { }
+
     return rawTemplate;
 };
 
@@ -48,7 +49,8 @@ const getDefaultPatternData = (dir, filename) => {
 
         var dataCandidates = get(jsonData, 'defaults');
         data = sample(dataCandidates);
-    } catch (err) { }
+    } catch (error) { }
+
     return data;
 };
 

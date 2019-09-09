@@ -1,7 +1,6 @@
 'use strict';
 
 var path = require('path');
-var process = require('process');
 var glob = require('glob');
 var getPort = require('get-port');
 var auth = require('http-auth');
@@ -173,25 +172,28 @@ module.exports = function (options, helperPlugins) {
         return Promise.all(promises).then(function () {
             resolve({
                 app: app,
-                start: function (callback) {
+                start: async function (callback) {
                     var preferredPort = process.env.PORT || 5000;
-                    getPort(preferredPort).then(port => {
-                        const server = app.listen(port, () => {
-                            if (parseInt(port, 10) === parseInt(preferredPort, 10)) {
-                                console.info(`Server started on port ${port}`);
-                            } else {
-                                console.info(`Prefrerred port ${preferredPort} unavailable using port ${port} instead`);
-                            }
 
-                            console.info(`Open up http://localhost:${port} to view the app`);
+                    var port = await getPort({
+                        port: preferredPort
+                    });
 
-                            if (callback) {
-                                callback(server);
-                            }
-                        });
+                    var server = app.listen(port, () => {
+                        if (parseInt(port, 10) === parseInt(preferredPort, 10)) {
+                            console.info(`Server started on port ${port}`);
+                        } else {
+                            console.info(`Prefrerred port ${preferredPort} unavailable using port ${port} instead`);
+                        }
+
+                        console.info(`Open up http://localhost:${port} to view the app`);
+
+                        if (callback) {
+                            callback(server);
+                        }
                     });
                 }
             });
-        }).catch(err => console.error(err.stack));
+        }).catch(error => console.error(error.stack));
     });
 };

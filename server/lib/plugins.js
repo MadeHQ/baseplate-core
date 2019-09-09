@@ -13,8 +13,10 @@ function register(coreHelpers, pluginHelpers) {
             } else {
                 result = a || b;
             }
+
             return result;
         };
+
         var args = _.flatten([{}, xs, merger]);
         return _.merge.apply(_, args);
     }

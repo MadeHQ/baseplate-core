@@ -8,8 +8,7 @@ var commonVariables = require('../lib/commonVariables');
 var collections = require('../lib/collections');
 var plugins = require('../lib/plugins');
 
-/* eslint-disable max-params */
-module.exports = function (sectionConfig, items, partials, data, clientDir) {
+module.exports = function (sectionConfig, items, partials, data, clientDir) { // eslint-disable-line max-params
     var router = new express.Router({
         mergeParams: true
     });

@@ -13,10 +13,11 @@ module.exports = function (file, useMarkdown) {
     var usage;
     try {
         usage = fs.readFileSync(file, 'utf-8');
-    } catch (err) {
-        if (err.code !== 'ENOENT') {
-            throw err;
+    } catch (error) {
+        if (error.code !== 'ENOENT') {
+            throw error;
         }
     }
+
     return (usage) ? contents(usage, useMarkdown) : undefined;
 };
