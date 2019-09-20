@@ -173,7 +173,7 @@ module.exports = function (options, helperPlugins) {
             resolve({
                 app: app,
                 start: async function (callback) {
-                    var preferredPort = process.env.PORT || 5000;
+                    var preferredPort = parseInt(process.env.PORT || 5000, 10);
 
                     var port = await getPort({
                         port: preferredPort

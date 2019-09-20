@@ -1,12 +1,13 @@
 {
   "name": "baseplate-core",
   "main": "server/index.js",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "license": "MIT",
   "description": "A tool for building prototypes and pattern libraries.",
-  "author": "Made Media Ltd. <developers@mademedia.co.uk> (made.media)",
+  "author": "Made Media Ltd. <developers@made.media> (made.media)",
   "contrbutors": [
-    "David Rapson <david@davidrapson.co.uk> (davidrapson.co.uk)"
+    "David Rapson <david@davidrapson.co.uk> (davidrapson.co.uk)",
+    "Hiren Patel <hiren.patel@made.media>"
   ],
   "repository": "github:MadeHQ/baseplate-core",
   "engines": {
