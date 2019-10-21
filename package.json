@@ -48,7 +48,7 @@
     "express": "4.17.1",
     "express-handlebars": "3.1.0",
     "get-port": "5.0.0",
-    "glob": "7.1.4",
+    "glob": "7.1.5",
     "handlebars": "4.2.0",
     "http-auth": "3.2.3",
     "lodash": "4.17.15",
