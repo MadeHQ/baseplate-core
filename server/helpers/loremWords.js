@@ -1,6 +1,6 @@
 var random = require('lodash/random');
 var capitalize = require('lodash/capitalize');
-var loremIpsum = require('lorem-ipsum');
+var loremIpsum = require('lorem-ipsum').loremIpsum;
 
 module.exports = function (min, max) {
     return capitalize(loremIpsum({
