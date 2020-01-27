@@ -1,4 +1,4 @@
-var loremIpsum = require('lorem-ipsum');
+var loremIpsum = require('lorem-ipsum').loremIpsum;
 
 module.exports = function (count) {
     return loremIpsum({
