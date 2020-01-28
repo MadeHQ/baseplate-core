@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "ava": "2.4.0",
-    "clean-css": "4.2.1",
+    "clean-css": "4.2.2",
     "clean-css-cli": "4.3.0",
     "nsp": "3.2.1",
     "pre-commit": "1.2.2",
