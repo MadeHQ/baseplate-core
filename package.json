@@ -50,7 +50,7 @@
     "get-port": "5.0.0",
     "glob": "7.1.4",
     "handlebars": "4.4.0",
-    "http-auth": "3.2.3",
+    "http-auth": "4.1.0",
     "lodash": "4.17.15",
     "lorem-ipsum": "2.0.3",
     "minimist": "1.2.0",
