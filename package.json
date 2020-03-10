@@ -53,7 +53,7 @@
     "http-auth": "3.2.3",
     "lodash": "4.17.15",
     "lorem-ipsum": "2.0.3",
-    "minimist": "1.2.0",
+    "minimist": "1.2.1",
     "morgan": "1.9.1",
     "require-directory": "2.1.1",
     "showdown": "1.9.0",
